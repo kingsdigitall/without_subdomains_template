@@ -694,39 +694,39 @@ export default async function NeighborhoodPage({
   );
 }
 
-// export async function generateStaticParams() {
-//   let content: any = {};
-//   try {
-//     const data = await getSubdomainData();
-//     if (data && data.subdomains) {
-//       // Convert array back to object with slug as key
-//       content = data.subdomains.reduce((acc: any, item: any) => {
-//         if (item.slug) {
-//           acc[item.slug] = item;
-//         }
-//         return acc;
-//       }, {});
-//     }
-//   } catch (e) {
-//     // Fallback to static content if API fails
-//     content = subdomainContent.subdomainData;
-//   }
+export async function generateStaticParams() {
+  let content: any = {};
+  try {
+    const data = await getSubdomainData();
+    if (data && data.subdomains) {
+      // Convert array back to object with slug as key
+      content = data.subdomains.reduce((acc: any, item: any) => {
+        if (item.slug) {
+          acc[item.slug] = item;
+        }
+        return acc;
+      }, {});
+    }
+  } catch (e) {
+    // Fallback to static content if API fails
+    content = subdomainContent.subdomainData;
+  }
 
-//   const cityData: any = content;
-//   const neighborhoods: any[] = [];
+  const cityData: any = content;
+  const neighborhoods: any[] = [];
 
-//   // Extract neighborhoods only from cities that have valid slugs and neighborhoods
-//   Object.values(cityData).forEach((city: any) => {
-//     if (city.slug && city.neighbourhoods) {
-//       const cityNeighborhoods = city.neighbourhoods
-//         .split("|")
-//         .map((neighName: string) => ({
-//           State: city.slug,
-//           neighborhood: neighName.trim().toLowerCase().replace(/\s+/g, "-").replace(/\.+$/, ""),
-//         }));
-//       neighborhoods.push(...cityNeighborhoods);
-//     }
-//   });
+  // Extract neighborhoods only from cities that have valid slugs and neighborhoods
+  Object.values(cityData).forEach((city: any) => {
+    if (city.slug && city.neighbourhoods) {
+      const cityNeighborhoods = city.neighbourhoods
+        .split("|")
+        .map((neighName: string) => ({
+          State: city.slug,
+          neighborhood: neighName.trim().toLowerCase().replace(/\s+/g, "-").replace(/\.+$/, ""),
+        }));
+      neighborhoods.push(...cityNeighborhoods);
+    }
+  });
 
-//   return neighborhoods;
-// }
+  return neighborhoods;
+}

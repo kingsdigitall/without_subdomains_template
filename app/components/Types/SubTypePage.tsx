@@ -196,7 +196,7 @@ const SubTypePage = ({ params }: any) => {
               .filter((Item: any) => Item.slug !== params.types)
               .map((type: any, idx: number) => (
                 <Link
-                  href={`/types/${type.slug}`}
+                  href={`/${type.slug}`}
                   key={idx}
                   className="group flex w-48 flex-col items-center rounded-lg border  border-gray-200 bg-gray-100 p-6 transition hover:bg-main hover:text-white hover:shadow-lg"
                 >

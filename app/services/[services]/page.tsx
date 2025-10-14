@@ -126,3 +126,8 @@ const page = ({ params }: { params: { services: string } }) => {
 
 export default page;
 
+export async function generateStaticParams() {
+  return data.serviceData.lists.map((locations: any) => ({
+    services: locations.slug.toString(),
+  }));
+}

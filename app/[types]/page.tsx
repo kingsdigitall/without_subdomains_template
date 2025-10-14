@@ -1,6 +1,5 @@
 import React from "react";
 import SubTypePage from "@/app/components/Types/SubTypePage";
-
 import contactContent from "@/app/Data/content";
 import subdomainContent from "@/app/Data/FinalContent";
 import NotFound from "../not-found";
@@ -22,7 +21,7 @@ export function generateMetadata({ params }: { params: { types: string } }) {
       description: "The page you are looking for does not exist.",
     };
   }
-
+  // console.log(data.serviceData.lists.map((item: any) => item.slug));
   return {
     title: serviceData.title
       ?.split("[location]")
@@ -63,3 +62,10 @@ const page = ({ params }: { params: { types: string } }) => {
 
 export default page;
 
+export async function generateStaticParams() {
+  const cityData: any = content;
+  const subDomain = Object.keys(cityData);
+  return data.serviceData.lists.map((locations: any) => ({
+    types: locations.slug.toString(),
+  }));
+}
