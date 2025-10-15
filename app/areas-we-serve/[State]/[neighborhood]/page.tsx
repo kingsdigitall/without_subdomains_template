@@ -637,7 +637,7 @@ export default async function NeighborhoodPage({
                 </p>
               </div>
               <div className="mx-10 mt-4 flex h-fit w-auto flex-wrap justify-center gap-4">
-                {ContentData?.neighbourhoods
+                {parentCityData?.neighbourhoods
                   ?.split("|")
                   .filter(
                     (item: string) => item.trim() !== ContentData?.name?.trim(),
