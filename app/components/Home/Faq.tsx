@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import {
   Accordion,
@@ -7,7 +6,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import contactContent from "@/app/Data/content";
-import SubdomainContent from "@/app/Data/FinalContent";
 
 const ContactInfo: any = contactContent.contactContent;
 

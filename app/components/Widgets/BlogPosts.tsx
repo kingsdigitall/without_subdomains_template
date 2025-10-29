@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useLayoutEffect } from "react";
+import React from "react";
 import DateComponent from "@/app/components/Widgets/DateComponent";
 import Link from "next/link";
 

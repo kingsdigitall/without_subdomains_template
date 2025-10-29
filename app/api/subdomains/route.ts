@@ -7,7 +7,7 @@ export const revalidate = 0;
 
 export async function GET(request: Request) {
   try {
-    const filePath = join(process.cwd(), 'components', 'Content', 'subDomainUrlContent.json');
+    const filePath = join(process.cwd(), 'components', 'Content', 'locationPagesContent.json');
     const fileData = readFileSync(filePath, 'utf-8');
     const subdomainsObject = JSON.parse(fileData);
 

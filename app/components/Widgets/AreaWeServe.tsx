@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import ContactInfo from "@/components/Content/ContactInfo.json";
 import Link from "next/link";
 
 const AreaWeServe = ({ slugs }: any) => {

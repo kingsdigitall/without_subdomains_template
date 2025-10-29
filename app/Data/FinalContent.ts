@@ -1,4 +1,4 @@
-import rawSubdomainData from "@/components/Content/subDomainUrlContent.json";
+import rawSubdomainData from "@/components/Content/locationPagesContent.json";
 
 // Adjust path if needed
 export interface SubdomainNeedsItem {

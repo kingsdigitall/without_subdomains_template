@@ -4,7 +4,6 @@ import Image from "next/image";
 import Service from "@/app/components/Home/Service";
 import { headers } from "next/headers";
 import CtaSimple from "@/app/components/CtaSimple";
-import Navbar from "@/app/components/Navbar";
 
 import contactContent from "@/app/Data/content";
 import subdomainContent from "@/app/Data/FinalContent";

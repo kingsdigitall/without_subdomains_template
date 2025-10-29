@@ -85,10 +85,10 @@ try {
 }
 
 try {
-  subDomainUrlContentJson = require("@/components/Content/subDomainUrlContent.json");
+  subDomainUrlContentJson = require("@/components/Content/locationPagesContent.json");
 } catch (error) {
   console.warn(
-    "DEFAULT: Failed to load subDomainUrlContent.json, using default subdomain content",
+    "DEFAULT: Failed to load locationPagesContent.json, using default subdomain content",
   );
   subDomainUrlContentJson = {};
 }

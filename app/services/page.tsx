@@ -2,7 +2,6 @@ import Banner from "@/app/components/Home/Banner";
 import React from "react";
 import Service from "@/app/components/Home/Service";
 import { Metadata } from "next";
-import Navbar from "../components/Navbar";
 
 import contactContent from "@/app/Data/content";
 import Types from "../components/Widgets/Types";

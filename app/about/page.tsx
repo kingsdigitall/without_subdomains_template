@@ -4,7 +4,6 @@ import Link from "next/link";
 import React from "react";
 import { FaCrown } from "react-icons/fa6";
 import Banner from "@/app/components/Home/Banner";
-import Navbar from "../components/Navbar";
 import contactContent from "@/app/Data/content";
 
 const ContactInfo: any = contactContent.contactContent;

@@ -3,7 +3,6 @@ import React from "react";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "../components/Navbar";
 import brandsContent from "@/app/Data/content";
 
 const ContactInfo:any = brandsContent.contactContent;
