@@ -67,26 +67,30 @@
     ]
   },
   "processWidget": {
-    "title": "Our Process",
-    "description": "",
-    "steps": [
-      {
-        "title": "Step 1: Tell Us What's Your Need",
-        "description": "Renovating a kitchen? Cleaning out a garage? Prepping a jobsite? Just tell us what kind of mess you’ve got, and we’ll match you with the perfect dumpster size—no guesswork, no overpaying."
-      },
-      {
-        "title": "Step 2: Lock in a Drop-Off That Works for You",
-        "description": "You pick the date. You pick the spot. We show up when we say we will, with a clean dumpster ready to park exactly where you need it."
-      },
-      {
-        "title": "Step 3: Fill It at Your Pace",
-        "description": "No rushing. No micromanaging. Just load up the junk, debris, or whatever else you're tossing out. Got questions about what goes in? Call us anytime."
-      }
-    ]
-  },
+      "title": "Our Process: Fast & Hassle-Free Fencing Installation",
+      "description": "",
+      "steps": [
+        {
+          "title": "Step 1: Consultation & Estimate",
+          "description": "We assess your property, discuss your needs, and provide a free quote."
+        },
+        {
+          "title": "Step 2: Custom Design & Planning",
+          "description": "Our experts help you choose materials, styles, and finishes that fit your property."
+        },
+        {
+          "title": "Step 3: Installation & Quality Check",
+          "description": "We build and install your fence with precision, ensuring durability."
+        },
+        {
+          "title": "Step 4: Final Inspection & Satisfaction",
+          "description": "Your satisfaction is our priority. We inspect and guarantee every fence."
+        }
+      ]
+    },
   "hourCtaWidget": {
-    "title": "Call today to schedule your dumpster <br/> keep your project moving without delays!"
-  },
+    "title": "Need Roof or Gutter Service Fast? Call Now for a Free Quote!"
+},
   "faq": [
     {
       "FAQ": "How much does a dumpster rental cost in [location]?",
