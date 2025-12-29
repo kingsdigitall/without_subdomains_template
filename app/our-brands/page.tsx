@@ -67,15 +67,14 @@ const page = () => {
                 {i.brandName}
               </p>
               <div
-                className="text-justify"
+                className="text-justify text-primary duration-100 ease-in-out hover:text-main hover:underline"
                 dangerouslySetInnerHTML={{ __html: i.brandDescription }}
               ></div>
-            </div>
-          ))}
-        </div>
-      )}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
-
-export default page;
