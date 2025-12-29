@@ -63,10 +63,13 @@ const page = () => {
               key={index}
               className="mx-auto grid max-w-6xl items-center justify-center gap-4 border-b border-black p-4 md:py-10"
             >
-              <p className="w-1/2 text-3xl text-main duration-100 ease-in-out hover:underline">
-                <Link href={i.brandLink}>{i.brandName}</Link>
+              <p className="w-1/2 text-3xl text-main">
+                {i.brandName}
               </p>
-              <p className="">{i.brandDescription}</p>
+              <div
+                className="text-justify"
+                dangerouslySetInnerHTML={{ __html: i.brandDescription }}
+              ></div>
             </div>
           ))}
         </div>
