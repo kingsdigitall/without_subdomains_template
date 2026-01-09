@@ -1,3 +1,12 @@
+// DEFAULT: Import local images with error handling
+let localImages: any = {};
+try {
+  localImages = require("@/local-image-paths.json");
+} catch (error) {
+  console.warn("DEFAULT: local-image-paths.json not found, using ImageKit URLs as fallback");
+  localImages = {};
+}
+
 // DEFAULT: Import statements with enhanced error handling for all JSON content files
 let aboutData: any;
 let contactPageDataJson: any;
@@ -353,8 +362,9 @@ function ensureTypesDataLists(serviceData: any): any {
                 "DEFAULT: Our dumpsters are perfect for projects in [location].",
             ),
             h2Image: getValueOrDefault(
-              typedItem?.h2Image,
-              defaultTypesData.lists[index]?.h2Image ||
+              localImages?.typesPage?.lists?.[String(index) as keyof typeof localImages.typesPage.lists] && 'h2Image' in localImages.typesPage.lists[String(index) as keyof typeof localImages.typesPage.lists] ? `/typesPage/${(localImages.typesPage.lists[String(index) as keyof typeof localImages.typesPage.lists] as any).h2Image}` : undefined,
+              typedItem?.h2Image ||
+                defaultTypesData.lists[index]?.h2Image ||
                 "https://ik.imagekit.io/h7rza8886p/Default1.jpg?updatedAt=1757319001930",
             ),
             tyesHeading: getValueOrDefault(
@@ -367,8 +377,9 @@ function ensureTypesDataLists(serviceData: any): any {
               defaultTypesData.lists[index]?.slug || "default-dumpster",
             ),
             imageUrl: getValueOrDefault(
-              typedItem?.imageUrl,
-              defaultTypesData.lists[index]?.imageUrl ||
+              localImages?.typesPage?.lists?.[String(index) as keyof typeof localImages.typesPage.lists] && 'imageUrl' in localImages.typesPage.lists[String(index) as keyof typeof localImages.typesPage.lists] ? `/typesPage/${(localImages.typesPage.lists[String(index) as keyof typeof localImages.typesPage.lists] as any).imageUrl}` : undefined,
+              typedItem?.imageUrl ||
+                defaultTypesData.lists[index]?.imageUrl ||
                 "https://ik.imagekit.io/h7rza8886p/Default1.jpg?updatedAt=1757319001930",
             ),
             overViewHeading: getValueOrDefault(
@@ -382,8 +393,9 @@ function ensureTypesDataLists(serviceData: any): any {
                 "DEFAULT: <p>Perfect for various projects and cleanouts.</p>",
             ),
             overViewImage: getValueOrDefault(
-              typedItem?.overViewImage,
-              defaultTypesData.lists[index]?.overViewImage ||
+              localImages?.typesPage?.lists?.[String(index) as keyof typeof localImages.typesPage.lists] && 'overViewImage' in localImages.typesPage.lists[String(index) as keyof typeof localImages.typesPage.lists] ? `/typesPage/${(localImages.typesPage.lists[String(index) as keyof typeof localImages.typesPage.lists] as any).overViewImage}` : undefined,
+              typedItem?.overViewImage ||
+                defaultTypesData.lists[index]?.overViewImage ||
                 "https://ik.imagekit.io/h7rza8886p/Default1.jpg?updatedAt=1757319001930",
             ),
             leftSection: (() => {
@@ -487,8 +499,9 @@ function ensureTypesDataLists(serviceData: any): any {
                 "DEFAULT: Ideal Projects for This Dumpster:",
             ),
             idealImage: getValueOrDefault(
-              typedItem?.idealImage,
-              defaultTypesData.lists[index]?.idealImage ||
+              localImages?.typesPage?.lists?.[String(index) as keyof typeof localImages.typesPage.lists] && 'idealImage' in localImages.typesPage.lists[String(index) as keyof typeof localImages.typesPage.lists] ? `/typesPage/${(localImages.typesPage.lists[String(index) as keyof typeof localImages.typesPage.lists] as any).idealImage}` : undefined,
+              typedItem?.idealImage ||
+                defaultTypesData.lists[index]?.idealImage ||
                 "https://ik.imagekit.io/h7rza8886p/Default1.jpg?updatedAt=1757319001930",
             ),
             idealProjects:
@@ -656,8 +669,9 @@ function ensureServiceDataLists(serviceData: any): any {
             defaultServiceData.lists[index]?.slug || "default-service",
           ),
           imageUrl: getValueOrDefault(
-            item?.imageUrl,
-            defaultServiceData.lists[index]?.imageUrl ||
+            localImages?.servicePage?.lists?.[String(index) as keyof typeof localImages.servicePage.lists] && 'imageUrl' in localImages.servicePage.lists[String(index) as keyof typeof localImages.servicePage.lists] ? `/servicePage/${(localImages.servicePage.lists[String(index) as keyof typeof localImages.servicePage.lists] as any).imageUrl}` : undefined,
+            item?.imageUrl ||
+              defaultServiceData.lists[index]?.imageUrl ||
               "https://ik.imagekit.io/h7rza8886p/Default1.jpg?updatedAt=1757319001930",
           ),
         }))
@@ -720,14 +734,19 @@ const contactContent: any = {
   ),
   zipCode: getValueOrDefault(contactDataJson?.zipCode, "DEFAULT: 12345"),
   bannerImage: getValueOrDefault(
-    contactDataJson?.bannerImage,
+    localImages?.ContactInfo?.bannerImage ? `/ContactInfo/${localImages.ContactInfo.bannerImage}` : undefined,
+    contactDataJson?.bannerImage ||
     "https://ik.imagekit.io/h7rza8886p/Default1.jpg?updatedAt=1757319001930",
   ),
   logoImage: getValueOrDefault(
-    contactDataJson?.logoImage,
+    localImages?.ContactInfo?.logoImage ? `/ContactInfo/${localImages.ContactInfo.logoImage}` : undefined,
+    contactDataJson?.logoImage ||
     "https://ik.imagekit.io/h7rza8886p/Default1.jpg?updatedAt=1757319001930",
   ),
-  favicon: getValueOrDefault(contactDataJson?.favicon, "DEFAULT: /favicon.ico"),
+  favicon: getValueOrDefault(
+    (localImages.ContactInfo as any)?.favicon ? `/ContactInfo/${(localImages.ContactInfo as any).favicon}` : undefined,
+    contactDataJson?.favicon || "DEFAULT: /favicon.ico"
+  ),
   googleAnalytics: getValueOrDefault(
     contactDataJson?.googleAnalytics,
     "DEFAULT: GA_MEASUREMENT_ID",
@@ -764,7 +783,8 @@ const aboutContent: any = {
     "DEFAULT: Your Trusted Partner for Waste Management Solutions",
   ),
   bannerImage: getValueOrDefault(
-    aboutBannerImage,
+    localImages?.about?.bannerImage ? `/about/${localImages.about.bannerImage}` : undefined,
+    aboutBannerImage ||
     "https://ik.imagekit.io/h7rza8886p/Default1.jpg?updatedAt=1757319001930",
   ),
   h1Banner: getValueOrDefault(
@@ -780,7 +800,8 @@ const aboutContent: any = {
     "DEFAULT: We provide affordable dumpster rental in [location] for homeowners, businesses, real estate professionals, and contractors. Whether you're managing a renovation, clearing out an estate, or handling a construction site, our roll off dumpsters are ready to simplify your cleanup. From 10-yard to 40-yard bins, we deliver the right size dumpster based on your project needs. With flexible rental periods, same-day or next-day delivery, and no hidden fees, our service is trusted by customers who need fast and stress-free solutions.",
   ),
   h2Image: getValueOrDefault(
-    h2Image,
+    localImages?.about?.h2Image ? `/about/${localImages.about.h2Image}` : undefined,
+    h2Image ||
     "https://ik.imagekit.io/h7rza8886p/Default1.jpg?updatedAt=1757319001930",
   ),
   missionSection: ensureMissionSection(missionSection),
@@ -851,7 +872,8 @@ const contactPageContent: any = {
     "DEFAULT: Ready to Get Started? Contact Us Today!",
   ),
   bannerImage: getValueOrDefault(
-    contactPageBannerImage,
+    localImages?.contact?.bannerImage ? `/contact/${localImages.contact.bannerImage}` : undefined,
+    contactPageBannerImage ||
     "https://ik.imagekit.io/h7rza8886p/Default1.jpg?updatedAt=1757319001930",
   ),
   h1Banner: getValueOrDefault(
@@ -864,7 +886,8 @@ const contactPageContent: any = {
   ),
   h2: getValueOrDefault(h2, "DEFAULT: Get Your Free Quote Today"),
   h2Image: getValueOrDefault(
-    contacth2Image,
+    localImages?.contact?.h2Image ? `/contact/${localImages.contact.h2Image}` : undefined,
+    contacth2Image ||
     "https://ik.imagekit.io/h7rza8886p/Default1.jpg?updatedAt=1757319001930",
   ),
   p2: getValueOrDefault(
@@ -877,7 +900,8 @@ const contactPageContent: any = {
     "DEFAULT: Fast delivery, competitive pricing, and excellent customer service make us the top choice for dumpster rental in [location]. Call [phone] to experience the difference.",
   ),
   h3Image: getValueOrDefault(
-    h3Image,
+    localImages?.contact?.h3Image ? `/contact/${localImages.contact.h3Image}` : undefined,
+    h3Image ||
     "https://ik.imagekit.io/h7rza8886p/Default1.jpg?updatedAt=1757319001930",
   ),
   ctaText: getValueOrDefault(
@@ -1028,7 +1052,8 @@ const homePageContent: any = {
     "DEFAULT: Fast, Reliable, Affordable",
   ),
   bannerImage: getValueOrDefault(
-    homeBannerImage,
+    localImages?.home?.bannerImage ? `/home/${localImages.home.bannerImage}` : undefined,
+    homeBannerImage ||
     "https://ik.imagekit.io/h7rza8886p/Default1.jpg?updatedAt=1757319001930",
   ),
   h1Banner: getValueOrDefault(
@@ -1048,7 +1073,8 @@ const homePageContent: any = {
     "DEFAULT: We provide the fastest, most reliable dumpster rental service in [location] with competitive pricing and exceptional customer service.",
   ),
   h2Image: getValueOrDefault(
-    homeh2Image,
+    localImages?.home?.h2Image ? `/home/${localImages.home.h2Image}` : undefined,
+    homeh2Image ||
     "https://ik.imagekit.io/h7rza8886p/Default1.jpg?updatedAt=1757319001930",
   ),
   h3: getValueOrDefault(
@@ -1060,7 +1086,8 @@ const homePageContent: any = {
     "DEFAULT: From residential cleanouts to commercial construction projects, we have the right dumpster size for your needs in [location].",
   ),
   h3Image: getValueOrDefault(
-    homeh3Image,
+    localImages?.home?.h3Image ? `/home/${localImages.home.h3Image}` : undefined,
+    homeh3Image ||
     "https://ik.imagekit.io/h7rza8886p/Default1.jpg?updatedAt=1757319001930",
   ),
   mapLink: getValueOrDefault(
@@ -1287,7 +1314,8 @@ const locationPageContent: any = {
     "DEFAULT: Serving [location] and Surrounding Areas",
   ),
   bannerImage: getValueOrDefault(
-    locationBannerImage,
+    localImages?.location?.bannerImage ? `/location/${localImages.location.bannerImage}` : undefined,
+    locationBannerImage ||
     "https://ik.imagekit.io/h7rza8886p/Default1.jpg?updatedAt=1757319001930",
   ),
   h1Banner: getValueOrDefault(
@@ -1369,7 +1397,8 @@ const brandsContent: any = {
     "DEFAULT: Learn about our trusted dumpster rental brands and equipment. We use only the highest quality dumpsters for reliable service in [location].",
   ),
   bannerImage: getValueOrDefault(
-    brandsBannerImage,
+    localImages?.ourBrand?.bannerImage ? `/ourBrand/${localImages.ourBrand.bannerImage}` : undefined,
+    brandsBannerImage ||
     "https://ik.imagekit.io/h7rza8886p/Default1.jpg?updatedAt=1757319001930",
   ),
   h1Banner: getValueOrDefault(
@@ -1382,7 +1411,8 @@ const brandsContent: any = {
     "DEFAULT: We partner with the most reliable brands in the industry to ensure you get quality dumpsters and professional service every time in [location].",
   ),
   h2Image: getValueOrDefault(
-    brandsh2Image,
+    localImages?.ourBrand?.h2Image ? `/ourBrand/${localImages.ourBrand.h2Image}` : undefined,
+    brandsh2Image ||
     "https://ik.imagekit.io/h7rza8886p/Default1.jpg?updatedAt=1757319001930",
   ),
   brandslist: (() => {
@@ -1566,7 +1596,8 @@ const servicePageContent: any = {
     "DEFAULT: Professional Dumpster Rental Services",
   ),
   bannerImage: getValueOrDefault(
-    serviceBannerImage,
+    localImages?.servicePage?.bannerImage ? `/servicePage/${localImages.servicePage.bannerImage}` : undefined,
+    serviceBannerImage ||
     "https://ik.imagekit.io/h7rza8886p/Default1.jpg?updatedAt=1757319001930",
   ),
   h1Banner: getValueOrDefault(
@@ -1674,7 +1705,8 @@ const typesJsonContent: any = {
     "DEFAULT: Choose the Right Dumpster Size",
   ),
   bannerImage: getValueOrDefault(
-    portableBannerImage,
+    localImages?.typesPage?.bannerImage ? `/typesPage/${localImages.typesPage.bannerImage}` : undefined,
+    portableBannerImage ||
     "https://ik.imagekit.io/h7rza8886p/Default1.jpg?updatedAt=1757319001930",
   ),
   h1Banner: getValueOrDefault(

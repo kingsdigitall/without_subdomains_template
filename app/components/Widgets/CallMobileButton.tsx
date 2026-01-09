@@ -1,8 +1,10 @@
 import React from "react";
-import ContactInfo from "@/components/Content/ContactInfo.json";
+import contactContent from "@/app/Data/content";
 import { IoIosCall } from "react-icons/io";
 import { FaDumpster, FaPhoneVolume, FaToilet } from "react-icons/fa";
 import Image from "next/image";
+
+const ContactInfo: any = contactContent.contactContent;
 
 const CallButtonMobile = () => {
   return (

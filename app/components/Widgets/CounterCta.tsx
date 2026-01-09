@@ -1,8 +1,10 @@
 import React from "react";
 import CountUp from "../Countup";
 import CouterUpWithK from "../CouterUpWithK";
-import ContactInfo from "@/components/Content/ContactInfo.json";
+import contactContent from "@/app/Data/content";
 import { IoCallSharp } from "react-icons/io5";
+
+const ContactInfo: any = contactContent.contactContent;
 import { FaBuildingCircleCheck } from "react-icons/fa6";
 import { RiTeamFill } from "react-icons/ri";
 import { VscPreview } from "react-icons/vsc";

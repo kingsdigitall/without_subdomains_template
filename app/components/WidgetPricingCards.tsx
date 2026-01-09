@@ -1,7 +1,9 @@
 import Link from 'next/link'
 import React from 'react'
 import { MdOutlinePhoneCallback } from 'react-icons/md'
-import ContactInfo from '@/components/Content/ContactInfo.json'
+import contactContent from '@/app/Data/content'
+
+const ContactInfo: any = contactContent.contactContent;
 
 const WidgetPricingCards = () => {
   return (
